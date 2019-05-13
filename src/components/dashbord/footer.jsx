@@ -127,7 +127,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-copyright text-center py-3">
-          © 2019 Copyright: Shubham Singh
+          © 2019 Copyright: Harsh Dwivedi & Shubham Singh
         </div>
       </div>
     </footer>
