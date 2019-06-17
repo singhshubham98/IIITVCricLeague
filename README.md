@@ -27,7 +27,8 @@ npm start
 
 ### Authors ✍️
 
-©️ [Shubham Singh](https://github.com/singhshubham98) ✨
+©️[Shubham Singh](https://github.com/singhshubham98) ✨
+[Yogender Jangir](https://github.com/YJangir49) ✨
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b50d0e75-874a-4a1f-9453-de06c537b597/deploy-status)](https://app.netlify.com/sites/singhshubham98/deploys)
 
