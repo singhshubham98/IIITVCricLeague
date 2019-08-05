@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
 import Home from "./components/dashbord/Home";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Register from "./components/auth/register";
 import Fixture from "./components/fixtures/fixtures";
 

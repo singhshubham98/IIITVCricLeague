@@ -5,11 +5,13 @@ import Navigation from "../dashbord/Navbar";
 import "../../static/css/register.css";
 import Footer from "../dashbord/footer";
 import image from "../../static/image/register.png";
+import { Redirect } from "react-router-dom";
 
 class Register extends Component {
   constructor(props) {
     super();
     this.state = {
+      redirect: false,
       firstname: "",
       lastname: "",
       batch: "",
@@ -29,6 +31,9 @@ class Register extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.SignUpPlayer(this.state);
+    this.setState({
+      redirect: true
+    });
   };
 
   handleBlur = e => {
@@ -90,92 +95,106 @@ class Register extends Component {
   };
 
   render() {
-    return (
-      <React.Fragment>
-        <div className="teamDiv">
-          <Navigation />
-          <div className="row">
-            <div className="col-md-6 col-lg-6 col-12 offset-md-1  offset-lg-1 mt-4">
-              <div className="formWrapper">
-                <form className="text-center p-5" onSubmit={this.handleSubmit}>
-                  <p className="h4 mb-4">Sign up</p>
-                  <input
-                    type="text"
-                    id="firstname"
-                    name="firstname"
-                    className="form-control mb-4"
-                    placeholder="First Name"
-                    value={this.state.firstname}
-                    onChange={this.handleChange}
-                    onBlur={this.handleBlur}
-                  />
-                  <p className="text-danger">{this.state.errors.firstname}</p>
-
-                  <input
-                    type="text"
-                    id="lastname"
-                    name="lastname"
-                    className="form-control mb-4"
-                    value={this.state.lastname}
-                    onChange={this.handleChange}
-                    onBlur={this.handleBlur}
-                    placeholder="Last Name"
-                  />
-
-                  <p className="text-danger">{this.state.errors.lastname}</p>
-
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="form-control mb-4"
-                    placeholder="E-mail"
-                    onBlur={this.handleBlur}
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                  <p className="text-danger">{this.state.errors.email}</p>
-                  <input
-                    type="text"
-                    id="batch"
-                    name="batch"
-                    className="form-control mb-4"
-                    placeholder="Batch"
-                    value={this.state.batch}
-                    onChange={this.handleChange}
-                    onBlur={this.handleBlur}
-                  />
-                  <p className="text-danger">{this.state.errors.batch}</p>
-                  <input
-                    type="tel"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    className="form-control mb-4"
-                    placeholder="Phone number"
-                    value={this.state.phoneNumber}
-                    onChange={this.handleChange}
-                    onBlur={this.handleBlur}
-                  />
-                  <p className="text-danger">{this.state.errors.phoneNumber}</p>
-
-                  <button
-                    className="btn button"
-                    disabled={this.state.errors.disabled}
-                    type="submit"
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/" />;
+    } else {
+      return (
+        <React.Fragment>
+          <div className="teamDiv">
+            <Navigation />
+            <div className="row">
+              <div className="col-md-6 col-lg-6 col-12 offset-md-1  offset-lg-1 mt-4">
+                <div className="formWrapper">
+                  <form
+                    className="text-center p-5"
+                    onSubmit={this.handleSubmit}
                   >
-                    Sign in
-                  </button>
-                </form>
+                    <p className="h4 mb-4">Sign up</p>
+                    <input
+                      type="text"
+                      id="firstname"
+                      name="firstname"
+                      className="form-control mb-4"
+                      placeholder="First Name"
+                      value={this.state.firstname}
+                      onChange={this.handleChange}
+                      onBlur={this.handleBlur}
+                    />
+                    <p className="text-danger">{this.state.errors.firstname}</p>
+
+                    <input
+                      type="text"
+                      id="lastname"
+                      name="lastname"
+                      className="form-control mb-4"
+                      value={this.state.lastname}
+                      onChange={this.handleChange}
+                      onBlur={this.handleBlur}
+                      placeholder="Last Name"
+                    />
+
+                    <p className="text-danger">{this.state.errors.lastname}</p>
+
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-control mb-4"
+                      placeholder="E-mail"
+                      onBlur={this.handleBlur}
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                    />
+                    <p className="text-danger">{this.state.errors.email}</p>
+                    <input
+                      type="text"
+                      id="batch"
+                      name="batch"
+                      className="form-control mb-4"
+                      placeholder="Batch"
+                      value={this.state.batch}
+                      onChange={this.handleChange}
+                      onBlur={this.handleBlur}
+                    />
+                    <p className="text-danger">{this.state.errors.batch}</p>
+                    <input
+                      type="tel"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      className="form-control mb-4"
+                      placeholder="Phone number"
+                      value={this.state.phoneNumber}
+                      onChange={this.handleChange}
+                      onBlur={this.handleBlur}
+                    />
+                    <p className="text-danger">
+                      {this.state.errors.phoneNumber}
+                    </p>
+
+                    <button
+                      className="btn button"
+                      disabled={this.state.errors.disabled}
+                      type="submit"
+                    >
+                      Sign in
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div className="col-md-5 col-lg-5">
+                <img
+                  src={image}
+                  alt="register_image"
+                  className="registerImage"
+                />
               </div>
             </div>
-            <div className="col-md-5 col-lg-5">
-              <img src={image} alt="register_image" className="registerImage" />
-            </div>
           </div>
-        </div>
-        <Footer />
-      </React.Fragment>
-    );
+          <Footer />
+        </React.Fragment>
+      );
+    }
   }
 }
 
